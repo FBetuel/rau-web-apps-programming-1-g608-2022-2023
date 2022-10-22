@@ -17,7 +17,12 @@ main {
     padding: 20px;
     background-color: black;
     border-radius: 50px;
+    max-width:fit-content;/*bug????*/
     animation: changeBg 15s ease;
+}
+
+.box1 img {
+    max-height: 100%;
 }
 
 @keyframes changeBg {   
@@ -28,10 +33,36 @@ main {
     100% {content: url("../images/4.png");}
 }
 
+
+
+.innerbox {
+    margin-bottom: 20px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    background-color: white;
+    border:2px solid rgba(128, 128, 128, 0.574);
+}
+
+.logo {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
 .inputs {
-    background-color: aqua;
+    width: 80%;
+    margin: auto;
     display: flex;
     flex-direction: column;
+}
+
+input {
+    height: 50px;
+    margin: 5px;
+    background-color: rgba(128, 128, 128, 0.138);
+    border:2px solid rgba(128, 128, 128, 0.298);
+    border-radius: 5px;
 }
 
 .logo {
@@ -39,6 +70,14 @@ main {
 }
 
 .singingbtn {
+    width: 80%;
+    margin: auto;
+    display: flex;
     justify-content: center;
-    width: 200px;
+    height: 40px;
+    font-size: larger;
+    background-color: rgb(61, 159, 229);
+    color: white;
+    border: 0;
+    border-radius: 5px;
 }
