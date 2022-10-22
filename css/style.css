@@ -33,7 +33,10 @@ main {
     100% {content: url("../images/4.png");}
 }
 
-
+.box2 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
 
 .innerbox {
     margin-bottom: 20px;
@@ -80,4 +83,24 @@ input {
     color: white;
     border: 0;
     border-radius: 5px;
+}
+
+.appdown {
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+
+.appflex {
+    display: flex;
+    flex-direction: row;
+}
+
+.appdown p {
+    text-align: center;
+}
+
+.appdown img {
+    width: 100%;
+    margin: 10px;
 }
