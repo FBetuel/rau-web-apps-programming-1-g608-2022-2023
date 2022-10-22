@@ -62,7 +62,7 @@ main {
 
 input {
     height: 50px;
-    margin: 5px;
+    margin-bottom: 10px;
     background-color: rgba(128, 128, 128, 0.138);
     border:2px solid rgba(128, 128, 128, 0.298);
     border-radius: 5px;
@@ -73,17 +73,24 @@ input {
 }
 
 .singingbtn {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
     height: 40px;
     font-size: larger;
     background-color: rgb(61, 159, 229);
+
     color: white;
     border: 0;
     border-radius: 5px;
+    margin-top: 10px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+
 }
+
 
 .appdown {
     width: 80%;
