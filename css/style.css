@@ -105,6 +105,13 @@ input {
     flex: 1;
 }
 
+.facebook {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: center;
+    font-stretch: 100%;
+}
 
 .appdown {
     width: 80%;
