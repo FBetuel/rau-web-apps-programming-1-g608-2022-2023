@@ -5,6 +5,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: 100vh;
 }
 
 .box {
@@ -16,6 +17,15 @@ main {
     padding: 20px;
     background-color: black;
     border-radius: 50px;
+    animation: changeBg 15s ease;
+}
+
+@keyframes changeBg {   
+    0% {content: url("../images/1.png");}
+    25% {content: url("../images/2.png");}
+    50% {content: url("../images/3.png");}
+    75% {content: url("../images/4.png");}
+    100% {content: url("../images/4.png");}
 }
 
 .inputs {
