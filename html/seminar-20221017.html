@@ -3,9 +3,11 @@
 <html>
     <head>
      <link rel="stylesheet" href="../css/style.css">
+     
     </head>
 
     <body>
+
         <main>
             <div class="box box1">
             <!-- Here I want to have an image -->
@@ -25,9 +27,21 @@
                     <div>
                         <div class="inputs">
                             <!-- TODO: Specify input type as "text" -->
-                            <input type="text">
+                            <div class="input" id="in1">
+                                <label for="fname">Username or Email</label>
+                                <input class="in1" id="fname" name="fname" type="text" 
+                                    onfocusout="lostfocus('in1')"
+                                    onchange="hascontent('in1')"
+                                    onfocus="hasfocus('in1')"/>
+                            </div>
                             <!-- TODO: Specify input type as "password" -->
-                            <input type="password">
+                            <div class="input" id="in2">
+                                <label for="pas">Password</label>
+                                <input class="in2" id="pas" name="pas" type="password"
+                                    onfocusout="lostfocus('in2')"
+                                    onchange="hascontent('in2')"
+                                    onfocus="hasfocus('in2')"/>
+                            </div>
                             <button class="singingbtn">Sing In</button>
                         </div>
                     </div>
@@ -55,5 +69,19 @@
                 </div>
             </div>
         </main>
+        <script>
+            function hascontent(id) {
+                let textbox = document.getElementsByClassName(id)[0];
+                if (textbox.value != "")
+                    document.getElementById(id).classList.add('hascontent');
+                else document.getElementById(id).classList.remove('hascontent');
+            }
+            function hasfocus(id) {
+                document.getElementById(id).classList.add('hasfocus');
+            }
+            function lostfocus(id) {
+                document.getElementById(id).classList.remove('hasfocus');
+            }
+        </script>
     </body>
 </html>
