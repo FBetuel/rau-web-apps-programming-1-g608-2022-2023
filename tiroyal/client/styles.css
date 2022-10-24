@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    border: 1px solid blue;
+}
+
+.middle-column-top-row {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    border: 1px solid red;
+}
