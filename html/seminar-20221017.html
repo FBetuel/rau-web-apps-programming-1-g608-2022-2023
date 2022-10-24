@@ -2,49 +2,82 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+     <link rel="stylesheet" href="../css/style.css">
+     
     </head>
 
     <body>
-        <div>
-            <div>
-            <!-- Here I want to have an image -->
-            <!-- TODO: Add src to an image-->
-                <img>
+
+        <main>
+            <div class="box box1">
+                <img src="../images/1.png">
             </div>
 
-            <div>
-            <!-- Here I want to have the sign in form, 
-                including logo + option to sign up -->
-                <div>
+            <div class="box box2">
+                <div class="innerbox">
                     <div>
                         <!-- TODO: add src to a logo file or URL-->
-                        <img>
+                        <img class="logo" src="../images/logo.webp">
                     </div>
 
                     <div>
-                        <div>
+                        <div class="inputs">
                             <!-- TODO: Specify input type as "text" -->
-                            <input>
+                            <div class="input" id="in1">
+                                <label for="fname">Username or Email</label>
+                                <input class="in1" id="fname" name="fname" type="text" 
+                                    onfocusout="lostfocus('in1')"
+                                    onchange="hascontent('in1')"
+                                    onfocus="hasfocus('in1')"/>
+                            </div>
                             <!-- TODO: Specify input type as "password" -->
-                            <input>
-                        </div>
-                    
-                        <div>
-                            <!-- Add content "Sign in" to the button below-->
-                            <button></button>
+                            <div class="input" id="in2">
+                                <label for="pas">Password</label>
+                                <input class="in2" id="pas" name="pas" type="password"
+                                    onfocusout="lostfocus('in2')"
+                                    onchange="hascontent('in2')"
+                                    onfocus="hasfocus('in2')"/>
+                            </div>
+                            <button class="singingbtn">Sing In</button>
                         </div>
                     </div>
+
+                    <div class="separator">
+                        <div></div>
+                        <p>OR</p>
+                        <div></div>
+                    </div>
+                    <p class="facebook">
+                        Log in with Facebook
+                    </p>
                 </div>
 
-                <div>
-
+                <div  class="innerbox">
+                    <p>Don't have an account?</p>
                 </div>
                 
-                <div>
-
+                <div class="appdown">
+                    <p>Get the app.</p>
+                    <div class="appflex">
+                        <img src="../images/a1.png">
+                        <img src="../images/a2.png">
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
+        <script>
+            function hascontent(id) {
+                let textbox = document.getElementsByClassName(id)[0];
+                if (textbox.value != "")
+                    document.getElementById(id).classList.add('hascontent');
+                else document.getElementById(id).classList.remove('hascontent');
+            }
+            function hasfocus(id) {
+                document.getElementById(id).classList.add('hasfocus');
+            }
+            function lostfocus(id) {
+                document.getElementById(id).classList.remove('hasfocus');
+            }
+        </script>
     </body>
 </html>
