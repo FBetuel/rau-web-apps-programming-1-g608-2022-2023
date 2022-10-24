@@ -24,6 +24,7 @@ main {
 
 .box1 img {
     max-height: 100%;
+    float: right;
 }
 
 @keyframes changeBg {   
