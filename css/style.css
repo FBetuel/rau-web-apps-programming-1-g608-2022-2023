@@ -19,6 +19,7 @@ main {
     border-radius: 50px;
     max-width:fit-content;/*bug????*/
     animation: changeBg 15s ease;
+    user-select: none;
 }
 
 .box1 img {
@@ -103,6 +104,7 @@ label {
 
 .logo {
     max-width: 70%;
+    user-select: none;
 }
 
 .singingbtn {
