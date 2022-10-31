@@ -1,7 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 0.2fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr repeat(5, 1fr);
     border: 1px solid blue;
 }
 
@@ -37,7 +41,9 @@
     height: 50px;
     width: 50px;
     float: right;
-
+    border-radius: 50%;
+    border: 2px solid #454545;
+    /* transform: scale(90%); */
 }
 
 .middle-column-top-row >* {
@@ -49,44 +55,37 @@
     grid-column-start: 3;
     grid-column-end: 11;
     grid-row-start: 3;
-    grid-row-end: 5;
+    grid-row-end: 7;
+    height: 100vh;
 }
 
-.full-screen-button{
-    align-self: center;
-    justify-self: center;
-    grid-row-start: 2;
-    grid-row-end:3;
+.leaderboard {
     grid-column-start: 11;
-    grid-column-end:13;
+    grid-column-end: 13;
+    grid-row-start: 3;
+    grid-row-end: 5;
+
+    border: 5px solid brown;
 }
 
-.pause-button{
-    align-self: center;
-    justify-self: center;
-    grid-row-start: 2;
-    grid-row-end:3;
-    grid-column-start: 9;
-    grid-column-end:11;   
+.inventory {
+    grid-column-start: 11;
+    grid-column-end: 13;
+    grid-row-start: 5;
+    grid-row-end: 7;
+
+    border: 5px solid pink;
 }
 
-.tutorial-button
-{
-    align-self: center;
-    justify-self: center;
-    grid-row-start: 2;
-    grid-row-end:3;
-    grid-column-start: 1;
-grid-column-end:3;
-    
-}
+.progressbar {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 7;
 
-.playtime{
-    align-self: center;
-    justify-self: center;
-    grid-row-start: 2;
-    grid-row-end:3;
-    grid-column-start:4;
-    grid-column-end:8;
+    border: 5px solid gold;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
