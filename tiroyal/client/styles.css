@@ -10,4 +10,41 @@
     grid-column-end: 3;
     grid-row-start: 1;
     border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.left-column-top-row{
+
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+}
+
+.right-column-top-row{
+
+    grid-column-start: 3;
+    grid-row-start: 1;
+}
+
+.left-column-top-row > img{
+        height: 50px;
+        width: 50px;
+}
+
+.right-column-top-row > img{
+    height: 50px;
+    width: 50px;
+    float: right;
+
+}
+
+.middle-column-top-row >* {
+
+    margin: 0px 10px;
+    
+
 }
