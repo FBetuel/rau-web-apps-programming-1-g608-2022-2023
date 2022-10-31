@@ -6,8 +6,8 @@
 }
 
 .middle-column-top-row {
-    grid-column-start: 4;
-    grid-column-end: 10;
+    grid-column-start: 3;
+    grid-column-end: 11;
     grid-row-start: 1;
     border: 1px solid red;
     display: flex;
@@ -49,4 +49,19 @@
     grid-column-end: 11;
     grid-row-start: 2;
     grid-row-end: 4;
+}
+
+.button-style
+{
+    background:    #ffd966;
+background:    linear-gradient(#ffd966, #3d85c6);
+border:        3px solid #d1c18e;
+border-radius: 1000px;
+/* box-shadow:    0 1px #444444; */
+padding:       9px 32px;
+color:         #ffffff;
+display:       inline-block;
+font:          normal bold 17px/1 "Open Sans", sans-serif;
+text-align:    center;
+text-shadow:   1px 1px #000000;
 }
