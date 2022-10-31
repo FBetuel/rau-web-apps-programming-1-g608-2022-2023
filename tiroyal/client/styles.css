@@ -5,7 +5,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 0.2fr repeat(4, 1fr);
+    grid-template-rows: 0.2fr repeat(5, 1fr);
     border: 1px solid blue;
 }
 
@@ -53,16 +53,16 @@
 .canvas {
     grid-column-start: 3;
     grid-column-end: 11;
-    grid-row-start: 2;
-    grid-row-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 6;
     height: 100vh;
 }
 
 .leaderboard {
     grid-column-start: 11;
     grid-column-end: 13;
-    grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 5;
 
     border: 5px solid brown;
 }
@@ -70,8 +70,8 @@
 .inventory {
     grid-column-start: 11;
     grid-column-end: 13;
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 6;
 
     border: 5px solid pink;
 }
@@ -79,8 +79,8 @@
 .progressbar {
     grid-column-start: 2;
     grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 6;
 
     border: 5px solid gold;
 
