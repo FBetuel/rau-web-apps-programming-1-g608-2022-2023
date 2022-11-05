@@ -54,7 +54,7 @@
     grid-column-start: 3;
     grid-column-end: 11;
     grid-row-start: 3;
-    grid-row-end: 6;
+    grid-row-end: 7;
     height: 100vh;
 }
 
@@ -85,7 +85,12 @@
     grid-column-start: 11;
     grid-column-end: 13;
     grid-row-start: 5;
+<<<<<<< HEAD
     grid-row-end: 6;
+=======
+    grid-row-end: 7;
+
+>>>>>>> af4e5b8670d9cd44ad5afa8a63928304958f297a
     border: 5px solid pink;
 }
 
@@ -93,7 +98,12 @@
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 3;
+<<<<<<< HEAD
     grid-row-end: 6;
+=======
+    grid-row-end: 7;
+
+>>>>>>> af4e5b8670d9cd44ad5afa8a63928304958f297a
     border: 5px solid gold;
     display: flex;
     flex-direction: column;
