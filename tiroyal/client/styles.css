@@ -109,6 +109,6 @@
 
 .box {
     grid-row-start: 2;
-    height: 100px !important;
+    height: 50px !important;
     align-self: center;
 }
