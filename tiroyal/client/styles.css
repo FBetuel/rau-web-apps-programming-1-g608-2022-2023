@@ -59,6 +59,46 @@
     height: 100vh;
 }
 
+.full-screen-button
+{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 11  ;
+    grid-column-end : 13;
+    align-self: center;
+    justify-self:center;
+}
+
+.pause-button
+{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 9;
+    grid-column-end: 11;
+    align-self: center;
+    justify-self: center;
+}
+
+.tutorial-button
+{
+    grid-row-start: 2;
+    grid-row-end:3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-self: center;
+    justify-self: center;
+}
+
+.playtime
+{
+    grid-row-start: 2;
+    grid-row-end:3;
+    grid-column-start: 4;
+    grid-column-end: 8;
+    align-self: center;
+    justify-self: center;
+}
+
 .leaderboard {
     grid-column-start: 11;
     grid-column-end: 13;
