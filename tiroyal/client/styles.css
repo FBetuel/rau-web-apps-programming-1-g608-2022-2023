@@ -153,3 +153,25 @@
     height: 50px !important;
     align-self: center;
 }
+
+.playtime-display {
+    color: green;
+}
+
+.playtime-display-overdose {
+    color: red;
+    font-size: large;
+    font-weight: 900;
+}
+
+.progress-start {
+    color: green;
+}
+
+.progress-medium {
+    color: orange;
+}
+
+.progress-end {
+    color: red;
+}

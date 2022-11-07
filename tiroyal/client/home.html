@@ -21,7 +21,7 @@
             </div>
 
 
-            <div class="box">
+            <div class="box tutorial-button">
                 <a href="#m2-o" class="link-1" id="m2-c">Tutorial
                     <img src="../assets/img/technical-support.png">
                 </a>
@@ -69,19 +69,19 @@
 
             </div>
             <div class="pause-button">
-                <button>
+                <button onclick="deletePlaytimeDisplay()">
                     Pause              
                 </button>
             </div>
 
-            <div class="tutorial-button">
+            <!-- <div class="tutorial-button">
                 <button>
                     Tutorial
                 </button>
-            </div>
+            </div> -->
 
             <div class="playtime">
-                <span>
+                <span id="playtime-display" name="playtime-display" class="playtime-display">
                     0 h 0 m 0 s
                 </span>
             </div>
@@ -98,28 +98,10 @@
                 <p>Powerups</p>
             </div>
 
-            <div class="progressbar">
-                <div>5%</div>
-                <div>10%</div>
-                <div>15%</div>
-                <div>20%</div>
-                <div>25%</div>
-                <div>30%</div>
-                <div>35%</div>
-                <div>40%</div>
-                <div>45%</div>
-                <div>50%</div>
-                <div>55%</div>
-                <div>60%</div>
-                <div>65%</div>
-                <div>70%</div>
-                <div>75%</div>
-                <div>80%</div>
-                <div>85%</div>
-                <div>90%</div>
-                <div>95%</div>
-                <div>100%</div>
+            <div id="progressbar" class="progressbar">
             </div>
         </div>
+
+        <script src="js/home.js"></script>
     </body>
 </html> 
