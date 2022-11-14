@@ -62,16 +62,21 @@
 
             <!-- Main section -->
 
-            <div class="full-screen-button">
-                <button>
-                    FullScreen
-                </button>
-
-            </div>
+            
             <div class="pause-button">
                 <button onclick="deletePlaytimeDisplay()">
                     Pause              
                 </button>
+            </div>
+
+            <div class="refresh-leaders">
+                <button onclick="refreshLeaderboard()">Refresh Leaders</button>
+            </div>
+            <div class="full-screen-button">
+                <button>
+                    Full screen
+                </button>
+
             </div>
 
             <!-- <div class="tutorial-button">
@@ -90,7 +95,7 @@
                 <canvas width="100"></canvas>
             </div>
 
-            <div class="leaderboard">
+            <div id="leaderboard" class="leaderboard">
                 <p>Leaderboard</p>
             </div>
 
@@ -103,5 +108,6 @@
         </div>
 
         <script src="js/home.js"></script>
+        <script src="js/home-leaderboard.js"></script>
     </body>
 </html> 

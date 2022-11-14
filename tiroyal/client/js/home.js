@@ -124,9 +124,5 @@ if (progressBarDiv) {
     }
 }
 
-let leaderboardDiv = document.getElementsByClassName("leaderboard");
-leaderboardDiv = leaderboardDiv[0];
-for (const element of LEADERS) {
-    const progressDiv = createProgressDiv(element);
-    leaderboardDiv.appendChild(progressDiv);
-}
+
+

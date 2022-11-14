@@ -59,34 +59,34 @@
     height: 100vh;
 }
 
-.full-screen-button
-{
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 11  ;
-    grid-column-end : 13;
-    align-self: center;
-    justify-self:center;
-}
-
 .pause-button
 {
     grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 9;
-    grid-column-end: 11;
-    align-self: center;
-    justify-self: center;
+    grid-column-start: 8;
+    grid-column-end: 10;
+    margin-top: 5%;
+}
+
+.refresh-leaders {
+    grid-row-start: 2;
+    grid-column-start: 10;
+    grid-column-end: 12;
+    margin-top: 5%;
+}
+
+.full-screen-button
+{
+    grid-row-start: 2;
+    grid-column-start: 12;
+    grid-column-end: 13;
+    margin-top: 5%;
 }
 
 .tutorial-button
 {
     grid-row-start: 2;
-    grid-row-end:3;
     grid-column-start: 2;
     grid-column-end: 3;
-    align-self: center;
-    justify-self: center;
 }
 
 .playtime
