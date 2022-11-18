@@ -99,14 +99,6 @@
     justify-self: center;
 }
 
-.leaderboard {
-    grid-column-start: 11;
-    grid-column-end: 13;
-    grid-row-start: 3;
-    grid-row-end: 5;
-    border: 5px solid brown;
-}
-
 .button-style
 {
     background:    #ffd966;
