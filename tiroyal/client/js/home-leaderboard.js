@@ -11,6 +11,8 @@ class User {
     }
 }
 
+
+
 // TODO: Get this using an API (future)
 const USERS = [
     new User("player1"),
@@ -54,8 +56,9 @@ function createLeaderboard(users) {
     }
 }
 
+// TODO: Automatic
 function refreshLeaderboard() {
-    const leaderboard = document.getElementById("leaderboard");
+    const leaderboard = document.getElementById("leaderboard-content");
     if (leaderboard.children.length > 1) {
         let currentLeaderIndex = 1;
         while (leaderboard.children.length > 1) {
