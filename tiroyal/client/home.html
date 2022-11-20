@@ -23,7 +23,7 @@
 
 
             <div class="box tutorial-button">
-                <a href="#m2-o" class="link-1" id="m2-c">Tutorial
+                <a href="#m2-o" onclick="js_open_modal(event)" class="link-1" id="m2-c">Tutorial
                     <img src="../assets/img/technical-support.png">
                 </a>
                 <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
@@ -32,7 +32,7 @@
                     <!-- <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex dicta maiores libero minus obcaecati iste optio, eius labore repellendus.</p>
                     <button class="modal__btn">Button &rarr;</button>
                     <button class="modal__btn">Button &rarr;</button> -->
-                    <a href="#m2-c" class="link-2"></a> 
+                    <a href="#m2-c" onclick="js_close_modal(event)" class="link-2"></a> 
                     
                     <div class="moves">
                         <div class="move">
@@ -138,5 +138,6 @@
         <script src="js/home-leaderboard.js"></script>
         <script src="js/home-canvas.js"></script>
         <script src="js/home-powerups.js"></script>
+        <script src="js/tutorialmodal.js"></script>
     </body>
 </html> 

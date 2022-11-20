@@ -98,6 +98,11 @@ when users will click/enter button(link) browser will add a #id in a url and whe
   display: flex;
 }
 
+/*Added or removed with Javascript*/
+.show{
+  display: flex;
+}
+
 .modal {
   width: 50rem;
   padding: 0 2rem 4rem 2rem;
