@@ -11,8 +11,18 @@ class User {
     }
 }
 
+
+
 // TODO: Get this using an API (future)
 const USERS = [
+    new User("player1"),
+    new User("megaplayer"),
+    new User("superplayer"),
+    new User("new-user"),
+    new User("player1"),
+    new User("megaplayer"),
+    new User("superplayer"),
+    new User("new-user"),
     new User("player1"),
     new User("megaplayer"),
     new User("superplayer"),
@@ -46,16 +56,32 @@ function createLeaderboard(users) {
     users = randomUserPoints(users);
     users = sortUsers(users);
 
-    const leaderboard = document.getElementById("leaderboard");
-    for (const user of users) {
-        const leader = document.createElement("p");
-        leader.innerText = `${user.username} --- ${user.points}`;
-        leaderboard.appendChild(leader);
+    const leaderboard = document.getElementById("leaderboard-content");
+    for (let i = 0; i<users.length; i++) {
+        const item = document.createElement("div");item.className="leaderboard-item";
+            const iuser = document.createElement("div");iuser.className="leaderboard-user";
+                const pic = document.createElement("div");pic.className="leaderboard-profile-pic";
+                const div = document.createElement("div");
+                    const rank = document.createElement("div");rank.className="leaderboard-rank";rank.innerText=`#${i+1}`;
+                    const name = document.createElement("div");name.className="leaderboard-name";name.innerText=users[i].username;
+            const score = document.createElement("div");score.className="leaderboard-score";score.innerText=users[i].points;
+
+        
+        iuser.appendChild(pic);
+            div.appendChild(rank);
+            div.appendChild(name);
+        iuser.appendChild(div);
+        
+        item.appendChild(iuser);
+        item.appendChild(score);
+
+        leaderboard.appendChild(item);
     }
 }
 
+// TODO: Automatic
 function refreshLeaderboard() {
-    const leaderboard = document.getElementById("leaderboard");
+    const leaderboard = document.getElementById("leaderboard-content");
     if (leaderboard.children.length > 1) {
         let currentLeaderIndex = 1;
         while (leaderboard.children.length > 1) {
