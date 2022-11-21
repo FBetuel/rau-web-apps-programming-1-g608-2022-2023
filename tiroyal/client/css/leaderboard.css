@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     border: 5px solid brown;
+    height: 550px;
 }
 #leaderboard-title{
     font-size: 30px;
@@ -15,7 +16,7 @@
 }
 
 #leaderboard-content {
-    max-height: 200px;
+    max-height: fit-content;
     overflow: scroll;
 }
 
