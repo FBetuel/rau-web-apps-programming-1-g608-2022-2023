@@ -57,6 +57,8 @@
     grid-row-start: 3;
     grid-row-end: 7;
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 .pause-button
@@ -160,4 +162,11 @@
 
 .progress-end {
     color: red;
+}
+
+canvas {
+    /* transform: translateX(-50%); */
+    border: #000000 2px solid;
+    width: 800px;
+    height: 500px;
 }
