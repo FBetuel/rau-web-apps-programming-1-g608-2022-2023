@@ -2,15 +2,25 @@ const canvas = document.getElementById("viewport");
 
 const context = canvas.getContext('2d');
 
+const Lane = {
+    LEFT: 1,
+    MID: 2,
+    RIGHT: 3,
+    count: 3,
+    laneWidth: canvas.width / 3,
+    laneHeigth: canvas.height
+};
+
 const player = new Image();
 class Position {
-    constructor(x, y){
+    constructor(x,y){
         this.x = x;
-        this.y= y;
+        this.y = y;
+        this.lane = Lane.MID;
     }
 }
 // TODO: Don't allow direct use
-let playerPos = new Position(0,0)
+let playerPos = new Position(0,470)
 
 
 const enemyWeak = new Image();
@@ -20,13 +30,40 @@ initializeCanvas();
 
 function initializeCanvas() {
     player.src = 'assets/game/player.png';
-    player.onload = drawImage;
+    movePlayer(Lane.MID);
+    drawPlayer();
+    // player.onload = drawImage;
+    drawLanes();
 }
 
 
-function drawImage() {
-    context.drawImage(player, 0, 470);
-    playerPos = new Position(0, 470); 
+function drawPlayer() {
+    context.drawImage(player, playerPos.x, playerPos.y);
+}
+
+function drawLanes() {
+    for(let i = 1; i<=Lane.count; i++) {
+        context.beginPath();
+        context.moveTo(Lane.laneWidth * i, 0);
+        context.lineTo(Lane.laneWidth * i, Lane.laneHeigth);
+        context.stroke(); 
+    }
+}
+
+function movePlayer(lane) {
+    let half = Lane.laneWidth / 2 + 45 // TODO: Get fixed sized textures
+    switch(lane) {
+        case Lane.LEFT:
+            playerPos.x = Lane.laneWidth / 2;
+        break;
+        case Lane.MID:
+            playerPos.x = Lane.laneWidth * 2 - half
+        break;
+        case Lane.RIGHT:
+            playerPos.x = Lane.laneWidth * 3 - half
+        break;
+    }
+    playerPos.lane = lane
 }
 
 function onKeyPress(e) {
@@ -41,33 +78,26 @@ function onKeyPress(e) {
     // Check Input
     switch (e.keyCode) {
         // move right
-        case 100: // D
+        case 68: // D
+        case 100: // d
         case 39: // Right Arrow
-            movePlayerTo(playerPos.x+=100,playerPos.y)
+            let laneToMoveTo = playerPos.lane + 1 > 3 ? 3 : playerPos.lane + 1
+            movePlayer(laneToMoveTo)
         break
         // move left
-        case 97: // A
+        case 65: // A
+        case 97: // a
         case 37: // Left arrow
-            movePlayerTo(playerPos.x-=100,playerPos.y)
+            let moveTo = playerPos.lane - 1 < 0 ? 0 : playerPos.lane - 1 
+            movePlayer(moveTo)
+        break
     }
 
     // Redraw frame
     drawPlayer();
+    drawLanes();
     //Tdrawenemies...
     //Tbackgrounds
-}
-function movePlayerTo(x, y) {
-    if (x > 740) {
-        playerPos.x = 740;
-    } else if (x < 0) {
-        playerPos.x = 0;
-    } else {
-        playerPos.x = x;
-    }
-}
-
-function drawPlayer() {
-    context.drawImage(player, playerPos.x, playerPos.y);
 }
 
 function arrowKeysSnowflakes(e) {
