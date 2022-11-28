@@ -51,10 +51,10 @@ function drawLanes() {
 }
 
 function movePlayer(lane) {
-    let half = Lane.laneWidth / 2 + 45 // TODO: Get fixed sized textures
+    let half = (Lane.laneWidth + player.width) / 2  // TODO: Get fixed sized textures
     switch(lane) {
         case Lane.LEFT:
-            playerPos.x = Lane.laneWidth / 2;
+            playerPos.x = Lane.laneWidth - half;
         break;
         case Lane.MID:
             playerPos.x = Lane.laneWidth * 2 - half
