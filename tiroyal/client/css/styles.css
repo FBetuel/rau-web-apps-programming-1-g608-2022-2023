@@ -5,7 +5,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 0.2fr 0.2fr 300px repeat(3, 1fr);
+    grid-template-rows: 0.2fr 0.2fr minmax(0,40vh) minmax(0,20vh)repeat(3, 1fr);
     border: 1px solid blue;
 }
 
@@ -57,6 +57,8 @@
     grid-row-start: 3;
     grid-row-end: 7;
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 .pause-button
@@ -160,4 +162,11 @@
 
 .progress-end {
     color: red;
+}
+
+canvas {
+    /* transform: translateX(-50%); */
+    border: #000000 2px solid;
+    width: 800px;
+    height: 500px;
 }
