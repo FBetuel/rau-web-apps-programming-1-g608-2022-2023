@@ -2,6 +2,8 @@ import sqlite3
 
 from tiroyal.server.users import User
 
+CONNECTION_STRING = "/Users/luchicla/Work/RAU/rau-web-apps-programming-1-g608-2022-2023/tiroyal/datastore/tiroyal.db"
+
 
 def create_user(user, connection_string):
     query = f"""INSERT INTO users(name, email, password, second_password)
@@ -9,37 +11,68 @@ def create_user(user, connection_string):
 
     conn = sqlite3.connect(connection_string)
     cursor = conn.cursor()
-    cursor.execute(query)
-    conn.commit()
-    conn.close()
+    try:
+        cursor.execute(query)
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        raise e
 
 
-def get_user_email_and_password(user, connection_string):
+def get_user_by_email(user, connection_string):
     conn = sqlite3.connect(connection_string)
 
     # create select query
-    query = f"select name, email, password, second_password from users where email = '{user.email}';"
+    query = f"select id, name, email, password, second_password from users where email = '{user.email}';"
 
     # initialise a cursor
     cursor = conn.cursor()
 
     # execute query using the cursor
-    results = list(cursor.execute(query))
-    users = []
-    for user in results:
-        current_user = User.from_list(user)
-        users.append(current_user)
-    return users
+    results = cursor.execute(query).fetchone()
+
+    cursor.close()
+    conn.close()
+
+    current_user = User.from_list(results)
+    return current_user
 
 
 def get_all_users(connection_string):
     conn = sqlite3.connect(connection_string)
-    query = "select name, email, password, second_password from users"
+    query = "select id, name, email, password, second_password from users"
     cursor = conn.cursor()
-    results = list(cursor.execute(query))
+    results = cursor.execute(query).fetchall()
+    cursor.close()
+    conn.close()
     users = []
     for user in results:
         current_user = User.from_list(user)
         users.append(current_user)
     return users
 
+
+def edit_user_by_email(user, connection_string):
+    user_dict = user.to_dict()
+    query = "UPDATE users SET "
+    for key, value in user_dict.items():
+        if isinstance(value, str) and value is not None:
+            query += f" {key} = '{value}',"
+        elif value is not None:
+            query += f" {key} = {value},"
+    query = query[:-1] # get all characters up to last
+    query += f" WHERE email = '{user.email}';"
+    print(query)
+    conn = sqlite3.connect(connection_string)
+    cursor = conn.cursor()
+    try:
+        cursor.execute(query)
+        conn.commit()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        raise e

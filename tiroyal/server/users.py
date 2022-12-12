@@ -4,11 +4,14 @@ import json
 class User:
     special_characters = ["*", "?", "!", "#", "&", "=", "(", ")", "_", "-"]
 
-    def __init__(self, name=None, email=None, password=None, second_password=None):
+    def __init__(self, id=None, name=None, email=None, password=None, second_password=None):
+        self.id = id
         self.name = name
         self.email = email
         self.password = password
         self.second_password = second_password
+        self.created_at = None
+        self.updated_at = None
         # self.special_characters = ["*", "?", "!", "#", "&", "=", "(", ")", "_", "-"]
 
     def validate_email(self):
@@ -73,30 +76,46 @@ class User:
 
     @classmethod
     def from_dict(cls, user_dict):
+        id = user_dict.get("id")
         name = user_dict.get("name")
         email = user_dict.get("email")
         password = user_dict.get("password")
         second_password = user_dict.get("second_password")
+        created_at = user_dict.get("created_at")
+        updated_at = user_dict.get("updated_at")
 
-        obj = cls(name=name, email=email, password=password, second_password=second_password)
+        obj = cls(id=id, name=name, email=email, password=password, second_password=second_password)
+        obj.created_at = created_at
+        obj.updated_at = updated_at
         return obj
 
     @classmethod
     def from_list(cls, user_list):
-        name = user_list[0]
-        email = user_list[1]
-        password = user_list[2]
-        second_password = user_list[3]
+        if not user_list or user_list is None:
+            raise ValueError("Invalid user details.")
 
-        obj = cls(name=name, email=email, password=password, second_password=second_password)
+        id = user_list[0]
+        name = user_list[1]
+        email = user_list[2]
+        password = user_list[3]
+        second_password = user_list[4]
+
+        obj = cls(id=id, name=name, email=email, password=password, second_password=second_password)
         return obj
 
-    def to_json(self):
+    def to_dict(self):
         user_dict = {
+            "id": self.id,
             "name": self.name,
             "email": self.email,
             "password": self.password,
-            "second_password": self.second_password
+            "second_password": self.second_password,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }
+        return user_dict
+
+    def to_json(self):
+        user_dict = self.to_dict()
         user_json = json.dumps(user_dict)
         return user_json
