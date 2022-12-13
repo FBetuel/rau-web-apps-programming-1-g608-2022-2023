@@ -100,9 +100,11 @@
             <div id="leaderboard" class="leaderboard">
                 <p id="leaderboard-title">Leaderboard</p>
                 <div>
-                    <button>Today</button>
-                    <button>This Week</button>
-                    <button>All time</button>
+                    <div class="switch-button"><span class="active"></span>
+                        <button onclick="isSwitch(event)" class="switch-button-case active-case">All Time</button>
+                        <button onclick="isSwitch(event)" class="switch-button-case">This Week</button>
+                        <button onclick="isSwitch(event)" class="switch-button-case">Today</button>
+                    </div>
                 </div>
                 <div id="leaderboard-col-labels">
                     <p>USER</p>
@@ -122,10 +124,9 @@
                     </div>
                 </div>
                 <div id="leaderboard-footer">
-                    <div class="switch-button"><span class="active"></span>
-                        <button class="switch-button-case left active-case">Pizza</button>
-                        <button class="switch-button-case right">Pasta</button>
-                        <button class="switch-button-case">Burger</button>
+                    <div class="switch-button"><span class="active" style="width:49%"></span>
+                        <button onclick="isSwitch(event)" class="switch-button-case active-case">Global</button>
+                        <button onclick="isSwitch(event)" class="switch-button-case">Friends</button>
                     </div>
                 </div>
             </div>
