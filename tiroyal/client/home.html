@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="css/styles.css"></link>
         <link rel="stylesheet" href="css/tutorialmodal.css"></link>
         <link rel="stylesheet" href="css/leaderboard.css">
+        <link rel="stylesheet" href="css/leaderboard-switch-btn.css">
     </head>
 
     <body>
@@ -121,8 +122,11 @@
                     </div>
                 </div>
                 <div id="leaderboard-footer">
-                    <button>Global</button>
-                    <button>Friends</button>
+                    <div class="switch-button"><span class="active"></span>
+                        <button class="switch-button-case left active-case">Pizza</button>
+                        <button class="switch-button-case right">Pasta</button>
+                        <button class="switch-button-case">Burger</button>
+                    </div>
                 </div>
             </div>
 
@@ -139,5 +143,6 @@
         <script src="js/home-canvas.js"></script>
         <script src="js/home-powerups.js"></script>
         <script src="js/tutorialmodal.js"></script>
+        <script src="js/leaderboard-switch-btn.js"></script>
     </body>
 </html> 
