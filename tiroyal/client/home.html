@@ -101,9 +101,12 @@
                 <p id="leaderboard-title">Leaderboard</p>
                 <div>
                     <div class="switch-button"><span class="active"></span>
-                        <button onclick="isSwitch(event)" class="switch-button-case active-case">All Time</button>
-                        <button onclick="isSwitch(event)" class="switch-button-case">This Week</button>
-                        <button onclick="isSwitch(event)" class="switch-button-case">Today</button>
+                        <button onclick="DoToggleButtonAnimation(event)"
+                         class="switch-button-case active-case">All Time</button>
+                        <button onclick="DoToggleButtonAnimation(event)"
+                         class="switch-button-case">This Week</button>
+                        <button onclick="DoToggleButtonAnimation(event)"
+                         class="switch-button-case">Today</button>
                     </div>
                 </div>
                 <div id="leaderboard-col-labels">
@@ -123,10 +126,14 @@
                         <div class="leaderboard-score">321312</div>
                     </div>
                 </div>
+                <div id="leaderboard-friends-adder" class="removed">
+                    <textarea></textarea>
+                    <button>Add friend</button>
+                </div>
                 <div id="leaderboard-footer">
                     <div class="switch-button"><span class="active" style="width:49%"></span>
-                        <button onclick="isSwitch(event)" class="switch-button-case active-case">Global</button>
-                        <button onclick="isSwitch(event)" class="switch-button-case">Friends</button>
+                        <button onclick="DoToggleButtonAnimation(event);globalLeaderboard()" class="switch-button-case active-case">Global</button>
+                        <button onclick="DoToggleButtonAnimation(event);friendsLeaderboard()" class="switch-button-case">Friends</button>
                     </div>
                 </div>
             </div>

@@ -53,9 +53,18 @@ function sortUsers(users) {
 }
 
 function createLeaderboard(users) { 
-    users = randomUserPoints(users);
-    users = sortUsers(users);
-
+    //// UI Template/component
+    // <div class="leaderboard-item">
+    //     <div class="leaderboard-user">
+    //         <!-- TODO: Change to IMG -->
+    //         <div class="leaderboard-profile-pic"></div>
+    //         <div>
+    //             <div class="leaderboard-rank">#300</div>
+    //             <div class="leaderboard-name">Dorel</div>
+    //         </div>  
+    //     </div>
+    //     <div class="leaderboard-score">321312</div>
+    // </div>
     const leaderboard = document.getElementById("leaderboard-content");
     for (let i = 0; i<users.length; i++) {
         const item = document.createElement("div");item.className="leaderboard-item";
@@ -92,6 +101,37 @@ function refreshLeaderboard() {
     let users = sessionStorage.getItem("users");
     if (users) {
         users = JSON.parse(users);
+        users = randomUserPoints(users);
+        users = sortUsers(users);
         createLeaderboard(users);
     }
+}
+
+function friendsLeaderboard() {
+    // Flush panel
+    const leaderboard = document.getElementById("leaderboard-content");
+    leaderboard.innerHTML = ""
+
+    // Show friend adding section
+    const firendsection = document.querySelector('#leaderboard-friends-adder')
+    firendsection.classList.remove('removed')
+
+    console.log(section)
+
+    // TODO: Get user's friends from API
+    // createLeaderboard(friends)
+    // check signin status, prompt for login
+    // if no friends: 
+
+}
+
+function globalLeaderboard() {
+    const leaderboard = document.getElementById("leaderboard-content");
+    leaderboard.innerHTML = ""
+
+    // Hide friend adding section
+    const firendsection = document.querySelector('#leaderboard-friends-adder')
+    firendsection.classList.add('removed')
+
+    refreshLeaderboard();
 }
