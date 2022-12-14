@@ -2,7 +2,7 @@ import sqlite3
 
 from tiroyal.server.users import User
 
-CONNECTION_STRING = "/Users/luchicla/Work/RAU/rau-web-apps-programming-1-g608-2022-2023/tiroyal/datastore/tiroyal.db"
+CONNECTION_STRING = "tiroyal/datastore"
 
 
 def create_user(user, connection_string):
@@ -72,6 +72,34 @@ def edit_user_by_email(user, connection_string):
         conn.commit()
         cursor.close()
         conn.close()
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        raise e
+
+from enum import StrEnum
+class LeaderboardTimeFrame(StrEnum):
+    ALL = '0',
+    WEEK = "date('now', 'start of day', '-1 week')",
+    DAY = "date('now', 'start of day')"
+
+def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL ,page=0):
+    # Highest score of each user by alltime/week/day
+    query = f"""
+    SELECT name, max(score) from games
+    JOIN users on users.id=user_id
+    WHERE date(games.created_at)>={timeframe}')
+    GROUP by user_id
+    ORDER BY score DESC LIMIT {page*20},{page*20+20}
+    """
+
+    conn = sqlite3.connect(connection_string)
+    cursor = conn.cursor()
+    try:
+        results = cursor.execute(query).fetchall()
+        cursor.close()
+        conn.close()
+        return results
     except Exception as e:
         cursor.close()
         conn.close()

@@ -4,7 +4,7 @@ import json
 from flask import Flask, request
 
 from tiroyal.server.register import signup, signin
-from tiroyal.server.repository import CONNECTION_STRING, get_all_users, edit_user_by_email
+from tiroyal.server.repository import CONNECTION_STRING, get_all_users, edit_user_by_email, get_global_leaderboard,LeaderboardTimeFrame
 from tiroyal.server.users import User
 
 app = Flask("tiroyal-api")
@@ -88,5 +88,19 @@ def users():
     if request.method == "DELETE":
         pass
 
+@app.route("/api/v1/global/all?pagenum", methods=["GET"])
+def global_leaderboard():
+    get_global_leaderboard(CONNECTION_STRING, LeaderboardTimeFrame.ALL, pagenum)
+    pass
+
+@app.route("/api/v1/global/week?pagenum", methods=["GET"])
+def global_leaderboard():
+    get_global_leaderboard(CONNECTION_STRING, LeaderboardTimeFrame.WEEK, pagenum)
+    pass
+
+@app.route("/api/v1/global/day?pagenum", methods=["GET"])
+def global_leaderboard():
+    get_global_leaderboard(CONNECTION_STRING, LeaderboardTimeFrame.DAY, pagenum)
+    pass
 
 app.run(port=5608, debug=True)
