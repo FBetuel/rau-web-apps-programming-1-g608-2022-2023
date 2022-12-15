@@ -100,7 +100,7 @@ def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL
     GROUP by user_id
     ORDER BY score DESC LIMIT {page*PER_PAGE},{page*PER_PAGE+PER_PAGE}
     """
-    print(query)
+
     conn = sqlite3.connect(connection_string)
     cursor = conn.cursor()
     try:
@@ -109,13 +109,12 @@ def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL
 
         # Format: 
         # in:  [[a1,b1], [a2,b2]]
-        # out: [{:"global_rank":1, "name":"bleah", "score":1231},{...}]
+        # out: [{:"rank":1, "name":"bleah", "score":1231},{...}]
 
-        print(results)
         ld = []
         for i, res in enumerate(results):
             dict = {
-                "global_rank": page*PER_PAGE+i,
+                "rank": page*PER_PAGE+i,
                 "name": res[0],
                 "score": res[1]
             }

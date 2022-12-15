@@ -95,7 +95,6 @@ def global_leaderboard():
     timeframe = request.args.get('timeframe', default = 'all', type = str)
     pagenum = request.args.get('pagenum', default = 1, type = int)
 
-    print(timeframe + str(pagenum))
     if timeframe == 'all':
         timeframe = LeaderboardTimeFrame.ALL
     elif timeframe == 'week':
