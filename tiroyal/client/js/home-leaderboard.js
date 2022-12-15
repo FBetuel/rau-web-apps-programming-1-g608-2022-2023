@@ -92,6 +92,7 @@ function createLeaderboard(users) {
 
 // TODO: Automatic
 function refreshLeaderboard() {
+    return
     const leaderboard = document.getElementById("leaderboard-content");
     leaderboard.innerHTML = ""
 
@@ -104,16 +105,7 @@ function refreshLeaderboard() {
         console.log(data_leaderboard)
         createLeaderboard(data_leaderboard)
     })
-    .catch((error) => {
-        // USE THE OFFLINE FAKE DATA IF SERVER IS OFFLINE
-        let users = sessionStorage.getItem("users");
-        if (users) {
-            users = JSON.parse(users);
-            users = randomUserPoints(users);
-            users = sortUsers(users);
-            createLeaderboard(users);
-        }
-    });
+    
 
 }
 
@@ -151,4 +143,16 @@ function globalLeaderboard(time='all', page=0) {
         console.log(data_leaderboard)
         createLeaderboard(data_leaderboard)
     })
+    .catch((error) => {
+        // USE THE OFFLINE FAKE DATA IF SERVER IS OFFLINE
+        let users = sessionStorage.getItem("users");
+        if (users) {
+            users = JSON.parse(users);
+            users = randomUserPoints(users);
+            users = sortUsers(users);
+            createLeaderboard(users);
+        }
+    });
 }
+
+globalLeaderboard();

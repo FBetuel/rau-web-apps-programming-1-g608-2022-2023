@@ -4,6 +4,9 @@ from server.users import User
 
 import sys
 
+# IMPORTANT:
+# !! cd into api/ !!
+# flask --app app run
 CONNECTION_STRING = ""
 if sys.platform == "win32":
     CONNECTION_STRING = ".\\datastore\\tiroyal.db"
@@ -128,6 +131,3 @@ def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL
         cursor.close()
         conn.close()
         raise e
-
-
-#flask --app app run
