@@ -90,25 +90,6 @@ function createLeaderboard(users) {
     }
 }
 
-// TODO: Automatic
-function refreshLeaderboard() {
-    return
-    const leaderboard = document.getElementById("leaderboard-content");
-    leaderboard.innerHTML = ""
-
-    fetch(`${API_URL}/api/v1/global?`+ new URLSearchParams({
-        timeframe: 'all',
-        pagenum: 0,
-    }))
-    .then((response) => response.json())
-    .then((data_leaderboard) => {
-        console.log(data_leaderboard)
-        createLeaderboard(data_leaderboard)
-    })
-    
-
-}
-
 function friendsLeaderboard() {
     // Flush panel
     const leaderboard = document.getElementById("leaderboard-content");
@@ -127,6 +108,7 @@ function friendsLeaderboard() {
 
 // TODO: Infinite scrolling
 // TODO: Caching
+// TODO: Automatic
 function globalLeaderboard(time='all', page=0) {
     // Save previous state all/week/day so we know it when we click away from firends panel
     document.getElementById('global-btn').previous=time
