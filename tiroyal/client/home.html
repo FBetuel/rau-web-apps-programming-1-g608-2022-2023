@@ -101,11 +101,11 @@
                 <p id="leaderboard-title">Leaderboard</p>
                 <div>
                     <div class="switch-button"><span class="active"></span>
-                        <button onclick="DoToggleButtonAnimation(event)"
+                        <button onclick="DoToggleButtonAnimation(event);globalLeaderboard('all')"
                          class="switch-button-case active-case">All Time</button>
-                        <button onclick="DoToggleButtonAnimation(event)"
+                        <button onclick="DoToggleButtonAnimation(event);globalLeaderboard('week')"
                          class="switch-button-case">This Week</button>
-                        <button onclick="DoToggleButtonAnimation(event)"
+                        <button onclick="DoToggleButtonAnimation(event);globalLeaderboard('day')"
                          class="switch-button-case">Today</button>
                     </div>
                 </div>

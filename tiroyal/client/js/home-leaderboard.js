@@ -94,13 +94,6 @@ function createLeaderboard(users) {
 function refreshLeaderboard() {
     const leaderboard = document.getElementById("leaderboard-content");
     leaderboard.innerHTML = ""
-    // if (leaderboard.children.length > 1) {
-    //     let currentLeaderIndex = 1;
-    //     while (leaderboard.children.length > 1) {
-    //         leaderboard.children[currentLeaderIndex].remove();
-    //     }
-    // }
-
 
     fetch(`${API_URL}/api/v1/global?`+ new URLSearchParams({
         timeframe: 'all',
@@ -133,8 +126,6 @@ function friendsLeaderboard() {
     const firendsection = document.querySelector('#leaderboard-friends-adder')
     firendsection.classList.remove('removed')
 
-    console.log(section)
-
     // TODO: Get user's friends from API
     // createLeaderboard(friends)
     // check signin status, prompt for login
@@ -142,7 +133,7 @@ function friendsLeaderboard() {
 
 }
 
-function globalLeaderboard() {
+function globalLeaderboard(time='all', page=0) {
     const leaderboard = document.getElementById("leaderboard-content");
     leaderboard.innerHTML = ""
 
@@ -150,5 +141,14 @@ function globalLeaderboard() {
     const firendsection = document.querySelector('#leaderboard-friends-adder')
     firendsection.classList.add('removed')
 
-    refreshLeaderboard();
+
+    fetch(`${API_URL}/api/v1/global?`+ new URLSearchParams({
+        timeframe: time,
+        pagenum: page,
+    }))
+    .then((response) => response.json())
+    .then((data_leaderboard) => {
+        console.log(data_leaderboard)
+        createLeaderboard(data_leaderboard)
+    })
 }

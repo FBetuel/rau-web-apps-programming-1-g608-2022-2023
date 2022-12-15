@@ -86,7 +86,7 @@ def edit_user_by_email(user, connection_string):
 from enum import StrEnum
 class LeaderboardTimeFrame(StrEnum):
     ALL = '0',
-    WEEK = "date('now', 'start of day', '-1 week')",
+    WEEK = "date('now', 'start of day', '-7 day')",
     DAY = "date('now', 'start of day')"
 
 def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL ,page=0):
