@@ -125,7 +125,13 @@ function friendsLeaderboard() {
 
 }
 
+// TODO: Infinite scrolling
+// TODO: Caching
 function globalLeaderboard(time='all', page=0) {
+    // Save previous state all/week/day so we know it when we click away from firends panel
+    document.getElementById('global-btn').previous=time
+
+    // Flush panel
     const leaderboard = document.getElementById("leaderboard-content");
     leaderboard.innerHTML = ""
 
@@ -133,19 +139,23 @@ function globalLeaderboard(time='all', page=0) {
     const firendsection = document.querySelector('#leaderboard-friends-adder')
     firendsection.classList.add('removed')
 
-
+    // GET /api/v1/global?timeframe=week&pagenum=0 HTTP/1.1" 200
     fetch(`${API_URL}/api/v1/global?`+ new URLSearchParams({
         timeframe: time,
         pagenum: page,
     }))
     .then((response) => response.json())
     .then((data_leaderboard) => {
+        // Remove offline banner
+        document.querySelector('#fake-data-banner').classList.add('removed')
         console.log(data_leaderboard)
         createLeaderboard(data_leaderboard)
     })
     .catch((error) => {
         // USE THE OFFLINE FAKE DATA IF SERVER IS OFFLINE
         let users = sessionStorage.getItem("users");
+        // Show offline banner
+        document.querySelector('#fake-data-banner').classList.remove('removed')
         if (users) {
             users = JSON.parse(users);
             users = randomUserPoints(users);

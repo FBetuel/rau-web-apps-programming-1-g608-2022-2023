@@ -71,9 +71,6 @@
                 </button>
             </div>
 
-            <div class="refresh-leaders">
-                <button onclick="refreshLeaderboard()">Refresh Leaders</button>
-            </div>
             <div class="full-screen-button">
                 <button>
                     Full screen
@@ -113,6 +110,8 @@
                     <p>USER</p>
                     <p>SCORE</p>
                 </div>
+                <p id="fake-data-banner" class="removed">Server offline, fake data</p>
+               
                 <div id="leaderboard-content">
                     <div class="leaderboard-item">
                         <div class="leaderboard-user">
@@ -132,7 +131,7 @@
                 </div>
                 <div id="leaderboard-footer">
                     <div class="switch-button"><span class="active" style="width:49%"></span>
-                        <button onclick="DoToggleButtonAnimation(event);globalLeaderboard()" class="switch-button-case active-case">Global</button>
+                        <button id="global-btn" previous="all" onclick="DoToggleButtonAnimation(event);globalLeaderboard(previous)" class="switch-button-case active-case">Global</button>
                         <button onclick="DoToggleButtonAnimation(event);friendsLeaderboard()" class="switch-button-case">Friends</button>
                     </div>
                 </div>
