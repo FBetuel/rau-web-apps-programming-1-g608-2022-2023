@@ -106,16 +106,18 @@ function friendsLeaderboard() {
 
 }
 
-// TODO: Infinite scrolling
 // TODO: Caching
 // TODO: Automatic
 function globalLeaderboard(time='all', page=0) {
     // Save previous state all/week/day so we know it when we click away from firends panel
     document.getElementById('global-btn').previous=time
+    document.getElementById('global-btn').ipage = page
 
     // Flush panel
-    const leaderboard = document.getElementById("leaderboard-content");
-    leaderboard.innerHTML = ""
+    if(page == 0) {
+        const leaderboard = document.getElementById("leaderboard-content");
+        leaderboard.innerHTML = ""
+    }
 
     // Hide friend adding section
     const firendsection = document.querySelector('#leaderboard-friends-adder')
@@ -132,6 +134,10 @@ function globalLeaderboard(time='all', page=0) {
         document.querySelector('#fake-data-banner').classList.add('removed')
         console.log(data_leaderboard)
         createLeaderboard(data_leaderboard)
+
+        // Do infinite scrolling, if response is not empty (end of leaderboard)
+        if (data_leaderboard.length)
+            lastItemObserver.observe(document.querySelector(".leaderboard-item:last-child"))
     })
     .catch((error) => {
         // USE THE OFFLINE FAKE DATA IF SERVER IS OFFLINE
@@ -146,5 +152,22 @@ function globalLeaderboard(time='all', page=0) {
         }
     });
 }
-
 globalLeaderboard();
+
+// https://www.youtube.com/watch?v=2IbRtjez6ag
+const lastItemObserver = new IntersectionObserver(entries => {
+    const lastItem = entries[0]
+    if(!lastItem.isIntersecting) return
+    
+    const prevTime = document.getElementById('global-btn').previous
+    const page = document.getElementById('global-btn').ipage + 1
+    globalLeaderboard(prevTime, page)
+    
+    lastItemObserver.unobserve(lastItem.target)
+
+    // !Last item gets reobserved in the global leaderboard after request
+    // Perhaps globalleaderboard should've returned an OK value or null and be checked in here instead?
+
+}, {
+    rootMargin: "100px"
+})
