@@ -117,7 +117,7 @@ def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL
         ld = []
         for i, res in enumerate(results):
             dict = {
-                "rank": page*PER_PAGE+i,
+                "rank": page*PER_PAGE+i+1,
                 "name": res[0],
                 "score": res[1]
             }
