@@ -22,8 +22,8 @@ else:
 
 
 def create_user(user, connection_string):
-    query = f"""INSERT INTO users(name, email, password, second_password)
-            VALUES ('{user.name}', '{user.email}', '{user.password}', '{user.second_password}');"""
+    query = f"""INSERT INTO users(name, email, password, second_password, created_at, updated_at)
+            VALUES ('{user.name}', '{user.email}', '{user.password}', '{user.second_password}', date('now'), date('now'));"""
 
     conn = sqlite3.connect(connection_string)
     cursor = conn.cursor()

@@ -35,8 +35,9 @@ def version():
 def register():
     try:
         request_body = request.json
+        print(request_body)
         signup(request_body, CONNECTION_STRING)
-        return "", 204
+        return "{}", 200, {"Content-Type": "application/json"}
     except Exception as e:
         error_message = {
             "error": f"Failed to create user. Cause: {e}."
