@@ -1,8 +1,15 @@
 import sqlite3
 
-from server.users import User
-
 import sys
+from enum import Enum
+
+from tiroyal.api.server.users import User
+
+
+class LeaderboardTimeFrame(Enum):
+    ALL = '0'
+    WEEK = "date('now', 'start of day', '-7 day')"
+    DAY = "date('now', 'start of day')"
 
 # IMPORTANT:
 # !! cd into api/ !!
@@ -11,7 +18,7 @@ CONNECTION_STRING = ""
 if sys.platform == "win32":
     CONNECTION_STRING = ".\\datastore\\tiroyal.db"
 else:
-    CONNECTION_STRING = "./datastore/tiroyal.db"
+    CONNECTION_STRING = "/Users/luchicla/Work/RAU/rau-web-apps-programming-1-g608-2022-2023/tiroyal/api/datastore/tiroyal.db"
 
 
 def create_user(user, connection_string):
@@ -86,11 +93,6 @@ def edit_user_by_email(user, connection_string):
         conn.close()
         raise e
 
-from enum import StrEnum
-class LeaderboardTimeFrame(StrEnum):
-    ALL = '0',
-    WEEK = "date('now', 'start of day', '-7 day')",
-    DAY = "date('now', 'start of day')"
 
 def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL ,page=0):
     PER_PAGE = 20
@@ -99,7 +101,7 @@ def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL
     query = f"""
     SELECT name, max(score) from games
     JOIN users on users.id=user_id
-    WHERE date(games.created_at)>={timeframe}
+    WHERE date(games.created_at)>={timeframe.value}
     GROUP by user_id
     ORDER BY score DESC LIMIT {page*PER_PAGE},{page*PER_PAGE+PER_PAGE}
     """
@@ -109,8 +111,7 @@ def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL
     try:
         results = cursor.execute(query).fetchall()
 
-
-        # Format: 
+        # Format:
         # in:  [[a1,b1], [a2,b2]]
         # out: [{:"rank":1, "name":"bleah", "score":1231},{...}]
 

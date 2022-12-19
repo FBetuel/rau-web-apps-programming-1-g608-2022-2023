@@ -2,12 +2,14 @@ import datetime
 import json
 
 from flask import Flask, request
+from flask_cors import CORS
 
 from server.register import signup, signin
 from server.repository import CONNECTION_STRING, get_all_users, edit_user_by_email, get_global_leaderboard,LeaderboardTimeFrame
 from server.users import User
 
 app = Flask("tiroyal-api")
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route("/", methods=["GET"])
@@ -88,12 +90,13 @@ def users():
     if request.method == "DELETE":
         pass
 
-@app.route("/api/v1/global", methods=["GET"])
+
+@app.route("/api/v1/global-leaderboard", methods=["GET"])
 #/<string:timeframe>/<int:pagenum>
 def global_leaderboard(): 
     
-    timeframe = request.args.get('timeframe', default = 'all', type = str)
-    pagenum = request.args.get('pagenum', default = 1, type = int)
+    timeframe = request.args.get('timeframe', default='all', type=str)
+    pagenum = request.args.get('pagenum', default=1, type=int)
 
     if timeframe == 'all':
         timeframe = LeaderboardTimeFrame.ALL
@@ -110,6 +113,7 @@ def global_leaderboard():
 
     res = get_global_leaderboard(CONNECTION_STRING, timeframe, pagenum)
     return json.dumps(res), 200
+
 
 app.run(port=5608, debug=True)
 

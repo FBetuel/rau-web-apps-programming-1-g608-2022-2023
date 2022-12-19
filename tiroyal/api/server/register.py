@@ -1,5 +1,5 @@
-from server.repository import create_user, get_user_by_email
-from server.users import User
+from tiroyal.api.server.repository import create_user, get_user_by_email
+from tiroyal.api.server.users import User
 
 
 def signup(request_body, connection_string):

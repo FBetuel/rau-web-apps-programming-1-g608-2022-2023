@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:5000"
+const API_URL = "http://localhost:5608"
 class User {
     name;
     password;
@@ -11,8 +11,6 @@ class User {
         this.name = name;
     }
 }
-
-
 
 // TODO: Get this using an API (future)
 const USERS = [
@@ -124,10 +122,15 @@ function globalLeaderboard(time='all', page=0) {
     firendsection.classList.add('removed')
 
     // GET /api/v1/global?timeframe=week&pagenum=0 HTTP/1.1" 200
-    fetch(`${API_URL}/api/v1/global?`+ new URLSearchParams({
-        timeframe: time,
-        pagenum: page,
-    }))
+    const params = {
+        "mode": "cors",
+        "method": "GET",
+        "headers": {"Content-Type": "application/json"}
+    };
+    const url = `${API_URL}/api/v1/global-leaderboard?`+
+        new URLSearchParams({timeframe: time, pagenum: page});
+
+    fetch(url, params)
     .then((response) => response.json())
     .then((data_leaderboard) => {
         // Remove offline banner
