@@ -1,0 +1,44 @@
+  .switch-button {
+    width: 100%;
+    height: 40px;
+    will-change: transform;
+    z-index: 197 !important;
+    cursor: pointer;
+    transition: 0.3s ease all;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+  }
+  .switch-button-case {
+    background: none;
+    width: 100%;
+    height: 100%;
+    color: black;
+    border: none;
+    transition: 0.3s ease all;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding-bottom: 1px;
+  }
+  .switch-button-case:hover {
+    color: grey;
+    cursor: pointer;
+  }
+  .switch-button-case:focus {
+    outline: none;
+  }
+  /* .switch-button */
+   .active {
+    color: red;
+    background-color: rgb(29, 56, 195);
+    position: absolute;
+    left:0%;
+    top: 0; 
+    width: 30%;
+    height: 100%;
+    z-index: -1;
+    transition: 0.3s ease-out all;
+  }
+  .switch-button .active-case {
+    color: white;
+  }

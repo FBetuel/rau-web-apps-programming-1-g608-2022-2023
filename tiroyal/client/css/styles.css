@@ -170,3 +170,7 @@ canvas {
     width: 800px;
     height: 500px;
 }
+
+.removed {
+    display: none;
+}

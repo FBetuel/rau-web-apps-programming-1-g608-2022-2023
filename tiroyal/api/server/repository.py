@@ -1,8 +1,17 @@
 import sqlite3
 
-from tiroyal.server.users import User
+from server.users import User
 
-CONNECTION_STRING = "/Users/luchicla/Work/RAU/rau-web-apps-programming-1-g608-2022-2023/tiroyal/datastore/tiroyal.db"
+import sys
+
+# IMPORTANT:
+# !! cd into api/ !!
+# flask --app app run
+CONNECTION_STRING = ""
+if sys.platform == "win32":
+    CONNECTION_STRING = ".\\datastore\\tiroyal.db"
+else:
+    CONNECTION_STRING = "./datastore/tiroyal.db"
 
 
 def create_user(user, connection_string):
@@ -72,6 +81,52 @@ def edit_user_by_email(user, connection_string):
         conn.commit()
         cursor.close()
         conn.close()
+    except Exception as e:
+        cursor.close()
+        conn.close()
+        raise e
+
+from enum import StrEnum
+class LeaderboardTimeFrame(StrEnum):
+    ALL = '0',
+    WEEK = "date('now', 'start of day', '-7 day')",
+    DAY = "date('now', 'start of day')"
+
+def get_global_leaderboard(connection_string, timeframe=LeaderboardTimeFrame.ALL ,page=0):
+    PER_PAGE = 20
+    
+    # Highest score of each user by alltime/week/day
+    query = f"""
+    SELECT name, max(score) from games
+    JOIN users on users.id=user_id
+    WHERE date(games.created_at)>={timeframe}
+    GROUP by user_id
+    ORDER BY score DESC LIMIT {page*PER_PAGE},{page*PER_PAGE+PER_PAGE}
+    """
+
+    conn = sqlite3.connect(connection_string)
+    cursor = conn.cursor()
+    try:
+        results = cursor.execute(query).fetchall()
+
+
+        # Format: 
+        # in:  [[a1,b1], [a2,b2]]
+        # out: [{:"rank":1, "name":"bleah", "score":1231},{...}]
+
+        ld = []
+        for i, res in enumerate(results):
+            dict = {
+                "rank": page*PER_PAGE+i+1,
+                "name": res[0],
+                "score": res[1]
+            }
+            ld.append(dict)
+
+        cursor.close()
+        conn.close()
+
+        return ld
     except Exception as e:
         cursor.close()
         conn.close()

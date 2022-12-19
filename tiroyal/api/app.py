@@ -3,9 +3,9 @@ import json
 
 from flask import Flask, request
 
-from tiroyal.server.register import signup, signin
-from tiroyal.server.repository import CONNECTION_STRING, get_all_users, edit_user_by_email
-from tiroyal.server.users import User
+from server.register import signup, signin
+from server.repository import CONNECTION_STRING, get_all_users, edit_user_by_email, get_global_leaderboard,LeaderboardTimeFrame
+from server.users import User
 
 app = Flask("tiroyal-api")
 
@@ -88,5 +88,29 @@ def users():
     if request.method == "DELETE":
         pass
 
+@app.route("/api/v1/global", methods=["GET"])
+#/<string:timeframe>/<int:pagenum>
+def global_leaderboard(): 
+    
+    timeframe = request.args.get('timeframe', default = 'all', type = str)
+    pagenum = request.args.get('pagenum', default = 1, type = int)
+
+    if timeframe == 'all':
+        timeframe = LeaderboardTimeFrame.ALL
+    elif timeframe == 'week':
+        timeframe = LeaderboardTimeFrame.WEEK
+    elif timeframe == 'day':
+        timeframe = LeaderboardTimeFrame.DAY
+    else:
+        error_message = {
+            "error": f"Timeframe(all/week/day) doesn't exist"
+        }
+        error_json = json.dumps(error_message)
+        return error_json, 500
+
+    res = get_global_leaderboard(CONNECTION_STRING, timeframe, pagenum)
+    return json.dumps(res), 200
 
 app.run(port=5608, debug=True)
+
+
